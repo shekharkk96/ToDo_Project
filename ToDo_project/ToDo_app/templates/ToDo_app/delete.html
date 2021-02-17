@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Delete Item</title>
+  </head>
+  <body>
+    <h1>Delete Item</h1>
+    <h3>Are you sure you want to delete "{{ item }}" ?</h3>
+    <a href="{% url 'index' %}">Cancel</a>
+    <form method="POST">
+      {% csrf_token %}
+      <input type="submit"  value="Confirm">
+
+
+    </form>
+
+  </body>
+</html>

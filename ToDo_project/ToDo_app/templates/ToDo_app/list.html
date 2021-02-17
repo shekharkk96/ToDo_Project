@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>To Do LIST </title>
+  </head>
+  <body>
+    <h1>__TO DO__</h1>
+    <form method="POST" action="/">
+      {{ form.as_p }}
+      {% csrf_token %}
+      <input type="submit" value="Create Task">
+    </form>
+    {% if list %}
+      {% for i in list %}
+        <div >
+          <a href="{% url 'updatetask' i.id %}">Update</a>
+          <a href="{% url 'deletetask' i.id %}">Delete</a>
+
+          {% if i.complete == True %}
+          <strike>{{ i }}</strike>
+          {% else %}
+          <span>{{ i }}</span>
+          {% endif %}
+
+        </div>
+      {% endfor %}
+    {% else %}
+     <p> No List Here ! </p>
+    {% endif %}
+
+  </body>
+</html>
